@@ -1,26 +1,33 @@
 # 🛡️ Detecção de Atividades Maliciosas em Pacotes de Rede
 
-Este projeto tem como objetivo comparar diferentes abordagens de detecção de tráfego malicioso em arquivos PCAP. Foram avaliadas três técnicas: inspeção profunda de pacotes com nDPI, sistema IDS/IPS com Suricata e filtragem estática baseada em regras simples (AoandonModel).
+Este projeto tem como objetivo comparar diferentes abordagens para a detecção de tráfego malicioso em arquivos PCAP. Foram avaliadas três técnicas principais:
+
+- **nDPI**: inspeção profunda de pacotes (Deep Packet Inspection)
+- **Suricata**: sistema IDS/IPS baseado em regras
+- **AoandonModel**: filtragem estática com base em portas suspeitas
 
 ---
 
 ## 📂 Estrutura do Projeto
+
+```
 projetos/
-├── main.py # Script principal com extração, validação e gráficos
-├── pcaps/ # Diretório para armazenar arquivos PCAP (não incluso no Git)
-├── resultados/ # Imagens geradas pelas análises comparativas
-├── NUSW-NB15_GT.csv # Ground truth para validação (não incluso no Git)
-├── .gitignore # Define arquivos ignorados pelo Git
+├── main.py               # Script principal com extração, validação e geração de gráficos
+├── pcaps/                # Diretório com arquivos PCAP (não incluso no Git)
+├── resultados/           # Diretório com os gráficos gerados
+├── NUSW-NB15_GT.csv      # Ground truth para validação (não incluso no Git)
+├── .gitignore            # Arquivos ignorados pelo Git
+```
 
 ---
 
 ## 🧪 Modelos Avaliados
 
-| Modelo       | Tipo              | Descrição                                  |
-|--------------|-------------------|---------------------------------------------|
-| **nDPI**     | DPI (Deep Packet Inspection) | Classifica pacotes com base em categorias de risco ("Unsafe", "Dangerous") |
-| **Suricata** | IDS/IPS baseado em regras     | Analisa pacotes e gera alertas a partir de regras padrão                |
-| **Aoandon**  | Filtragem estática | Detecta pacotes com base em portas suspeitas (ex: 23, 3389)               |
+| Modelo       | Tipo                      | Descrição                                                                 |
+|--------------|---------------------------|---------------------------------------------------------------------------|
+| **nDPI**     | Deep Packet Inspection    | Classifica pacotes com base em categorias de risco como "Unsafe" e "Dangerous" |
+| **Suricata** | IDS/IPS baseado em regras | Detecta tráfego malicioso com base em regras pré-definidas                |
+| **Aoandon**  | Filtragem Estática        | Filtra pacotes com base em portas específicas (ex: 23, 3389)              |
 
 ---
 
@@ -34,21 +41,38 @@ projetos/
 
 ---
 
-## 🚀 Execução
+## 🚀 Como Executar
 
 1. Instale as dependências:
    ```bash
    pip install -r requirements.txt
-2. Coloque os arquivos .pcap e NUSW-NB15_GT.csv nas pastas apropriadas (pcaps/ e raiz).
+   ```
+
+2. Adicione os arquivos:
+   - Coloque os arquivos `.pcap` na pasta `pcaps/`
+   - Coloque o arquivo `NUSW-NB15_GT.csv` na raiz do projeto
 
 3. Execute o script principal:
    ```bash
    python main.py
-   
-📈 Resultados
-Os resultados são exibidos no terminal e salvos como gráficos em resultados/.
+   ```
 
-⚠️ Observações
-Arquivos grandes (*.pcap, *.csv) não estão incluídos neste repositório devido ao limite do GitHub.
+---
 
-Para testar localmente, adicione seus próprios arquivos PCAP em pcaps/ e atualize o caminho no script
+## 📈 Resultados
+
+- Os resultados serão exibidos no terminal
+- Os gráficos serão salvos na pasta `resultados/`
+
+---
+
+## ⚠️ Observações
+
+- Arquivos grandes como `.pcap` e `.csv` **não estão incluídos no repositório** devido às limitações do GitHub.
+- Para reproduzir os experimentos, utilize seus próprios arquivos `.pcap` e um ground truth compatível.
+
+---
+
+## 📘 Licença
+
+Este projeto é acadêmico e livre para uso educacional.
